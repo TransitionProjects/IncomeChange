@@ -1,6 +1,9 @@
 """
 This script will track changes in earned income.
 
+Currently it only works for the Supportive Services Employment Team but the base
+report should be able to be modified to work for other providers as well.
+
 Future versions will of the
 class will be able to be used to track changes in any specific form of monthly
 income or non-chash benefits. Additional features will include the ability to
