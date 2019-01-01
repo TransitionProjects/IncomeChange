@@ -60,16 +60,17 @@ class Report:
             suffixes=("_entry", "_exit")
         ).fillna(0)
 
-        # create the gain, loss, no_change df
+        # create the gain, loss, no_change dataframes that do not contain the
+        # Client Unique IDs column
         gain = merged[
             merged["Monthly Amount(142)_entry"] < merged["Monthly Amount(142)_exit"]
-        ]
+        ][["Client Uid", "Monthly Amount(142)_entry", "Monthly Amount(142)_exit"]]
         loss = merged[
             merged["Monthly Amount(142)_entry"] > merged["Monthly Amount(142)_exit"]
-        ]
+        ][["Client Uid", "Monthly Amount(142)_entry", "Monthly Amount(142)_exit"]]
         no_change = merged[
             merged["Monthly Amount(142)_entry"] == merged["Monthly Amount(142)_exit"]
-        ]
+        ][["Client Uid", "Monthly Amount(142)_entry", "Monthly Amount(142)_exit"]]
 
         # return the dataframes
         return gain, loss, no_change
